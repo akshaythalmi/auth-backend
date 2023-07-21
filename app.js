@@ -5,9 +5,9 @@ const dbConfig = require("./db/dbConfig");
 const registerController = require("./controllers/registerController");
 const loginController = require("./controllers/loginController");
 const userController = require("./controllers/userController");
+const auth = require("./auth");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const auth = require("./auth");
 
 dbConfig();
 
@@ -32,4 +32,4 @@ app.post("/login", loginController.loginUser);
 
 app.post("/getUserByEmail", userController.getUserByEmail);
 
-app.post("/updateProfile", userController.updateProfile);
+app.post("/updateProfile", auth, userController.updateProfile);

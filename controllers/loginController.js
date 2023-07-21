@@ -25,7 +25,7 @@ const loginUser = (request, response) => {
               userId: user._id,
               userEmail: user.email,
             },
-            "RANDOM-TOKEN",
+            process.env.SECRET_KEY,
             { expiresIn: "24h" }
           );
           //   return success response
